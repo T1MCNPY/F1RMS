@@ -26,4 +26,4 @@ dist-ssr
 # added by author 
 .vscode
 
-.env
+# .env
