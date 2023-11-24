@@ -17,16 +17,14 @@ public class UserService {
     UserRepository userRepository;
 
     public User registerUser(User user) {
-//        User userByEmail = userRepository.findByEmail(user.getEmail());
-
-//        if(userByEmail != null){
-//            log.warn("Username is already existing");
-//            return null;
-//        }
-
-//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(16);
-//        String encodedPassword = encoder.encode(user.getPassword());
-//        user.setPassword(encodedPassword);
+        User userByEmail = userRepository.findByEmail(user.getEmail());
+        if(userByEmail != null){
+            log.warn("Username is already existing");
+            return null;
+        }
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(16);
+        String encodedPassword = encoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
         return userRepository.save(user);
     }
 
